@@ -9,6 +9,7 @@ LIGHT_GREEN = "#7bb77f"
 YELLOW = "#f7f5dd"
 GRAY_BG = "gray14"
 FONT_NAME = "Roboto"
+TEXT_COLOR_DISABLED = "#b3b3b3"
 
 
 class MainWindow(CTk):
@@ -24,7 +25,7 @@ class MainWindow(CTk):
         self.resizable(False, False)
         self.configure(padx=30, pady=30)
         self.grid_columnconfigure(1, weight=1)
-        self.configure(fg_color=(YELLOW, "gray14"))
+        self.configure(fg_color=(YELLOW, GRAY_BG))
         self.timer = "00:00"
         self.start_function = start_function
         self.reset_function = reset_function
@@ -46,7 +47,8 @@ class MainWindow(CTk):
             text_color="white",
             hover_color=LIGHT_GREEN,
             font=(FONT_NAME, 18),
-            command=self.press_start
+            command=self.press_start,
+            text_color_disabled=TEXT_COLOR_DISABLED
         )
         self.start_button.grid(row=2, column=0, padx=5, pady=30)
 
@@ -59,7 +61,8 @@ class MainWindow(CTk):
             text_color="white",
             font=(FONT_NAME, 18),
             command=self.press_reset,
-            state=DISABLED
+            state=DISABLED,
+            text_color_disabled=TEXT_COLOR_DISABLED
         )
         self.reset_button.grid(row=2, column=2, padx=5, pady=30)
 
@@ -71,11 +74,12 @@ class MainWindow(CTk):
             fg_color=GREEN,
             hover_color=LIGHT_GREEN,
             text_color="white",
-            command=self.press_options
+            command=self.press_options,
+            text_color_disabled=TEXT_COLOR_DISABLED
         )
         self.options_button.grid(row=2, column=1, padx=5, pady=30)
 
-        self.tomato_canvas = CTkCanvas(master=self, height=223, width=200, bg="gray14", highlightthickness=0)
+        self.tomato_canvas = CTkCanvas(master=self, height=223, width=200, bg=GRAY_BG, highlightthickness=0)
         self.tomato_image = tkinter.PhotoImage(file="tomato.png")
         self.tomato_canvas.create_image(100, 110, image=self.tomato_image)
         self.timer_text = self.tomato_canvas.create_text(105, 130, text=self.timer, font=(FONT_NAME, 25), fill="white")
@@ -85,7 +89,7 @@ class MainWindow(CTk):
         self.tomato_image_small = Image.open(fp="tomato.png").resize((90, 100))
         self.img_ready = ImageTk.PhotoImage(self.tomato_image_small)
 
-        self.checkmarks = CTkCanvas(master=self, height=112, width=120, bg="gray14", highlightthickness=0)
+        self.checkmarks = CTkCanvas(master=self, height=112, width=120, bg=GRAY_BG, highlightthickness=0)
         self.checkmarks_image = self.checkmarks.create_image(61, 50, image=self.transparent_image)
         self.number_work_units = self.checkmarks.create_text(61, 58, text="", fill="white", font=(FONT_NAME, 20))
 
@@ -103,8 +107,8 @@ class MainWindow(CTk):
     def change_appearence(self, dark_mode):
         if dark_mode == "1":
             set_appearance_mode("dark")
-            self.tomato_canvas.config(background="gray14")
-            self.checkmarks.config(background="gray14")
+            self.tomato_canvas.config(background=GRAY_BG)
+            self.checkmarks.config(background=GRAY_BG)
         elif dark_mode == "0":
             set_appearance_mode("light")
             self.tomato_canvas.config(background=YELLOW)
