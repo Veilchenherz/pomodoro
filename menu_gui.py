@@ -101,6 +101,8 @@ class Options(CTkToplevel):
         )
         self.cancel_button.grid(row=8, column=1, columnspan=3, sticky="E", padx=12, pady=10)
 
+        self.after(201, lambda: self.iconbitmap(bitmap="tomato.ico"))
+
     def press_ok_button(self):
         self.min_list = [self.work_input.get(), self.short_break_input.get(), self.long_break_input.get(), self.dark_mode_switch.get()]
         self.callback(self.min_list)
