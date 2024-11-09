@@ -108,7 +108,7 @@ def values_changed(new_data):
     short_break_min = int(new_data[1])
     long_break_min = int(new_data[2])
     dark_mode = str(new_data[3])
-    main_window.change_appearence(dark_mode)
+    main_window.change_appearance(dark_mode)
 
     with open("data.txt", "w") as data_file:
         data_file.write(f"{new_data[0]}\n{new_data[1]}\n{new_data[2]}\n{new_data[3]}")

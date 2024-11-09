@@ -104,7 +104,7 @@ class MainWindow(CTk):
         self.checkmarks.itemconfig(self.number_work_units, text="")
         self.checkmarks.itemconfig(self.checkmarks_image, image=self.transparent_image)
 
-    def change_appearence(self, dark_mode):
+    def change_appearance(self, dark_mode):
         if dark_mode == "1":
             set_appearance_mode("dark")
             self.tomato_canvas.config(background=GRAY_BG)
