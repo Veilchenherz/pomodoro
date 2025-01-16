@@ -69,6 +69,7 @@ def countdown(count):
 
     else:
         main_window.attributes("-topmost", True)
+        #main_window.iconify() #TODO Fenster soll aus Minimierung zurückkommen.
         main_window.focus()
         main_window.attributes("-topmost", False)
         start_timer()
@@ -134,39 +135,3 @@ with open("data.txt") as data_file:
 
 main_window.mainloop()
 
-
-
-
-
-
-# window = Tk()
-# window.title("Pomodoro Zeitmanagement")
-# window.config(padx=100, pady=50, bg=YELLOW)
-# window.minsize(800,400)
-
-
-
-# canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
-# tomato = PhotoImage(file="tomato.png")
-# canvas.create_image(100, 112, image=tomato)
-#
-# timer_text = canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 25, "bold"))
-# canvas.grid(row=1, column=1)
-#
-# start_button = Button(text="Start", bg="white", command=start_timer)
-# start_button.grid(row=2, column=0, sticky="E")
-#
-# reset_button = Button(text="Zurücksetzen", bg="white", command=reset_timer)
-# reset_button.grid(row=2, column=2, sticky="W")
-#
-# top_label = Label(text="Zeitmanagement", font=(FONT_NAME, 45, "normal"))
-# top_label.config(bg=YELLOW, fg=GREEN)
-# top_label.grid(row=0, column=1)
-#
-# check_marks = Label(fg=GREEN, bg=YELLOW, font=("Courier",25,"normal"))
-# check_marks.grid(row=3, column=1)
-#
-# options_button = Button(text="Einstellungen", command=open_menu)
-# options_button.grid(row=0, column=2)
-#
-# window.mainloop()
